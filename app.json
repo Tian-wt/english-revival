@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "english-revival",
+    "name": "English Revival",
     "slug": "english-revival",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -10,21 +10,38 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F8F9FF"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.englishrevival.app",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "需要麦克风权限来录制您的口语练习",
+        "NSSpeechRecognitionUsageDescription": "需要语音识别权限来评估您的发音"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#F8F9FF"
       },
+      "package": "com.englishrevival.app",
+      "permissions": [
+        "RECORD_AUDIO"
+      ],
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-av",
+        {
+          "microphonePermission": "需要麦克风权限来录制您的口语练习"
+        }
+      ]
+    ]
   }
 }
