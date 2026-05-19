@@ -38,6 +38,16 @@ jobs:
         env:
           NODE_ENV: production
 
+      - name: Fix asset paths for GitHub Pages subpath
+        run: |
+          BASE="/english-revival"
+          # Fix JS/CSS src paths in index.html
+          sed -i "s|src=\"/_expo/|src=\"${BASE}/_expo/|g" dist/index.html
+          sed -i "s|href=\"/_expo/|href=\"${BASE}/_expo/|g" dist/index.html
+          sed -i "s|href=\"/favicon|href=\"${BASE}/favicon|g" dist/index.html
+          echo "--- dist/index.html after fix ---"
+          cat dist/index.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
